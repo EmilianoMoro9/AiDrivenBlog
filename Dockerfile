@@ -4,7 +4,7 @@ FROM node:22-alpine AS base
 FROM base AS deps
 WORKDIR /app
 COPY package.json package-lock.json ./
-RUN npm ci
+RUN npm install
 
 # ── Etapa 2: build de producción ────────────────────────────────────────────
 FROM base AS builder
