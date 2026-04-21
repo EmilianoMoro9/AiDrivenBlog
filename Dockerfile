@@ -4,7 +4,7 @@ FROM node:22-alpine AS base
 FROM base AS deps
 WORKDIR /app
 COPY package.json ./
-RUN npm install --os=linux --cpu=x64 --libc=glibc
+RUN npm install --omit=optional
 
 # ── Etapa 2: build de producción ────────────────────────────────────────────
 FROM base AS builder
