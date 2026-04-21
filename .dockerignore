@@ -1,0 +1,22 @@
+# Dependencias (se reinstalan dentro del contenedor)
+node_modules
+
+# Output de builds anteriores
+.next
+
+# Git y herramientas de desarrollo
+.git
+.gitignore
+.eslintrc*
+
+# Archivos de entorno (nunca al contenedor)
+.env
+.env.*
+!.env.example
+
+# Docs y configs que no afectan el runtime
+README.md
+CLAUDE.md
+*.md
+Dockerfile
+.dockerignore
