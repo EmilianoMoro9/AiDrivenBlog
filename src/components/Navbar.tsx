@@ -4,10 +4,10 @@ import { useEffect, useState } from "react";
 
 const links = [
   { label: "About Me", href: "#about" },
+  { label: "Experiencia", href: "#experiencia" },
   { label: "Stack", href: "#stack" },
   { label: "Proyectos", href: "#projects" },
-  { label: "Blog", href: "#blog" },
-  { label: "Contacto", href: "#contact" },
+  { label: "Contacto", href: "mailto:emimoro2003@gmail.com" },
 ];
 
 export default function Navbar() {
