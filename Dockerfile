@@ -3,8 +3,8 @@ FROM node:22-alpine AS base
 # ── Etapa 1: instalar dependencias ──────────────────────────────────────────
 FROM base AS deps
 WORKDIR /app
-COPY package.json package-lock.json ./
-RUN npm install
+COPY package.json ./
+RUN npm install --os=linux --cpu=x64 --libc=glibc
 
 # ── Etapa 2: build de producción ────────────────────────────────────────────
 FROM base AS builder
