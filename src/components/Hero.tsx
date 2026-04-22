@@ -59,9 +59,9 @@ export default function Hero() {
                 letterSpacing: "0.08em",
                 whiteSpace: "nowrap",
                 boxSizing: "border-box",
-                border: "1px solid rgba(255,255,255,0.1)",
-                background: "rgba(255,255,255,0.05)",
-                color: "#a1a1aa",
+                border: "1px solid var(--glass-border)",
+                background: "var(--glass-bg)",
+                color: "var(--text-secondary)",
                 fontWeight: 300,
                 textTransform: "uppercase",
                 backdropFilter: "blur(4px)",
@@ -80,8 +80,8 @@ export default function Hero() {
             target="_blank"
             rel="noopener noreferrer"
             title="GitHub"
-            className="group flex items-center gap-2.5 rounded-full border border-white/10 bg-white/5 transition-all duration-300"
-            style={{ padding: "12px 24px", boxShadow: "0 4px 15px rgba(255,215,0,0.3)" }}
+            className="group flex items-center gap-2.5 rounded-full border transition-all duration-300"
+            style={{ borderColor: "var(--glass-border)", background: "var(--glass-bg)", padding: "12px 24px", boxShadow: "0 4px 15px rgba(255,215,0,0.3)" }}
             onMouseEnter={e => (e.currentTarget.style.boxShadow = "0 6px 24px rgba(255,215,0,0.6)")}
             onMouseLeave={e => (e.currentTarget.style.boxShadow = "0 4px 15px rgba(255,215,0,0.3)")}
           >
@@ -97,8 +97,8 @@ export default function Hero() {
             target="_blank"
             rel="noopener noreferrer"
             title="LinkedIn"
-            className="group flex items-center gap-2.5 rounded-full border border-white/10 bg-white/5 transition-all duration-300"
-            style={{ padding: "12px 24px", boxShadow: "0 4px 15px rgba(255,215,0,0.3)" }}
+            className="group flex items-center gap-2.5 rounded-full border transition-all duration-300"
+            style={{ borderColor: "var(--glass-border)", background: "var(--glass-bg)", padding: "12px 24px", boxShadow: "0 4px 15px rgba(255,215,0,0.3)" }}
             onMouseEnter={e => (e.currentTarget.style.boxShadow = "0 6px 24px rgba(255,215,0,0.6)")}
             onMouseLeave={e => (e.currentTarget.style.boxShadow = "0 4px 15px rgba(255,215,0,0.3)")}
           >
@@ -112,8 +112,8 @@ export default function Hero() {
           <a
             href="mailto:emimoro2003@gmail.com"
             title="Contact me"
-            className="group flex items-center gap-2.5 rounded-full border border-white/10 bg-white/5 transition-all duration-300"
-            style={{ padding: "12px 24px", boxShadow: "0 4px 15px rgba(255,215,0,0.3)" }}
+            className="group flex items-center gap-2.5 rounded-full border transition-all duration-300"
+            style={{ borderColor: "var(--glass-border)", background: "var(--glass-bg)", padding: "12px 24px", boxShadow: "0 4px 15px rgba(255,215,0,0.3)" }}
             onMouseEnter={e => (e.currentTarget.style.boxShadow = "0 6px 24px rgba(255,215,0,0.6)")}
             onMouseLeave={e => (e.currentTarget.style.boxShadow = "0 4px 15px rgba(255,215,0,0.3)")}
           >

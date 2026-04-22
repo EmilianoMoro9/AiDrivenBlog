@@ -104,15 +104,15 @@ export default function Experience() {
           top: -2.5rem;       /* reaches up into the title's margin-bottom gap */
           bottom: 1rem;
           width: 100%;
-          border-top: 1px solid rgba(255,255,255,0.1);
-          border-left: 1px solid rgba(255,255,255,0.1);
+          border-top: 1px solid var(--glass-border);
+          border-left: 1px solid var(--glass-border);
           border-top-left-radius: 24px;
           pointer-events: none;
           transition: border-color 0.7s ease;
         }
         .exp-active .exp-timeline-wrapper::before {
-          border-top-color: ${VIOLET};
-          border-left-color: ${VIOLET};
+          border-top-color: var(--accent-color);
+          border-left-color: var(--accent-color);
         }
 
         @media (max-width: 640px) {
@@ -155,7 +155,7 @@ export default function Experience() {
             className="text-5xl md:text-6xl font-thin leading-tight"
             style={{ marginBottom: "2.5rem", textAlign: "left" }}
           >
-            <span style={{ color: "white" }}>
+            <span style={{ color: "var(--text-primary)" }}>
               T
             </span>
             <span className="text-white">rayectoria </span>
@@ -202,7 +202,7 @@ export default function Experience() {
 
                       {/* Izquierda: rol + empresa + fecha */}
                       <div className="flex flex-col gap-1.5">
-                        <div className="flex items-center gap-2" style={{ color: "rgba(255,255,255,0.35)" }}>
+                        <div className="flex items-center gap-2" style={{ color: "var(--text-dimmer)" }}>
                           {exp.icon}
                           {exp.isActive && (
                             <span className="flex items-center gap-1 px-2 py-0.5 rounded-full bg-emerald-500/10 border border-emerald-500/20">
@@ -220,7 +220,7 @@ export default function Experience() {
                         </h4>
 
                         {/* Empresa en violeta suave */}
-                        <p className="font-light" style={{ fontSize: "0.8rem", color: "rgba(129,140,248,0.7)" }}>
+                        <p className="font-light" style={{ fontSize: "0.8rem", color: "var(--accent-color)" }}>
                           {exp.company}
                         </p>
 
@@ -230,7 +230,7 @@ export default function Experience() {
                       </div>
 
                       {/* Derecha: descripción */}
-                      <p className="font-light" style={{ fontSize: "0.875rem", color: "rgba(255,255,255,0.5)", lineHeight: "1.6" }}>
+                      <p className="font-light" style={{ fontSize: "0.875rem", color: "var(--text-dim)", lineHeight: "1.6" }}>
                         {exp.description}
                       </p>
                     </div>

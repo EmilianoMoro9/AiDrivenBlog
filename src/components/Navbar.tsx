@@ -87,9 +87,9 @@ export default function Navbar() {
             className="md:hidden flex flex-col gap-[5px] p-1"
             aria-label="Toggle menu"
           >
-            <span className={`block h-px w-7 bg-zinc-300 transition-all duration-300 origin-center ${menuOpen ? "rotate-45 translate-y-[6px]" : ""}`} />
-            <span className={`block h-px w-7 bg-zinc-300 transition-all duration-300 ${menuOpen ? "opacity-0" : ""}`} />
-            <span className={`block h-px w-7 bg-zinc-300 transition-all duration-300 origin-center ${menuOpen ? "-rotate-45 -translate-y-[6px]" : ""}`} />
+            <span className={`block h-px w-7 transition-all duration-300 origin-center ${theme === "dark" ? "bg-zinc-300" : "bg-zinc-600"} ${menuOpen ? "rotate-45 translate-y-[6px]" : ""}`} />
+            <span className={`block h-px w-7 transition-all duration-300 ${theme === "dark" ? "bg-zinc-300" : "bg-zinc-600"} ${menuOpen ? "opacity-0" : ""}`} />
+            <span className={`block h-px w-7 transition-all duration-300 origin-center ${theme === "dark" ? "bg-zinc-300" : "bg-zinc-600"} ${menuOpen ? "-rotate-45 -translate-y-[6px]" : ""}`} />
           </button>
         </div>
       </nav>
@@ -100,7 +100,7 @@ export default function Navbar() {
           menuOpen ? "max-h-72 opacity-100" : "max-h-0 opacity-0"
         }`}
       >
-        <ul className="flex flex-col px-10 pb-6 pt-5 gap-5 border-t border-white/8 mt-5">
+        <ul className={`flex flex-col px-10 pb-6 pt-5 gap-5 border-t mt-5 ${theme === "dark" ? "border-white/8" : "border-black/10"}`}>
           {links.map((link) => (
             <li key={link.href}>
               <a

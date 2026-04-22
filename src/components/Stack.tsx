@@ -146,9 +146,9 @@ export default function Stack() {
                       fontSize: "0.9rem",
                       padding: "10px 20px",
                       borderRadius: "9999px",
-                      background: "rgba(255,255,255,0.03)",
-                      border: "1px solid rgba(255,255,255,0.09)",
-                      color: "rgba(255,255,255,0.55)",
+                      background: "var(--glass-bg)",
+                      border: "1px solid var(--glass-border-dim)",
+                      color: "var(--text-dim)",
                       letterSpacing: "0.04em",
                       textDecoration: "none",
                     }}
@@ -162,9 +162,9 @@ export default function Stack() {
                     }}
                     onMouseLeave={e => {
                       const el = e.currentTarget as HTMLAnchorElement;
-                      el.style.background = "rgba(255,255,255,0.03)";
-                      el.style.borderColor = "rgba(255,255,255,0.09)";
-                      el.style.color = "rgba(255,255,255,0.55)";
+                      el.style.background = "var(--glass-bg)";
+                      el.style.borderColor = "var(--glass-border-dim)";
+                      el.style.color = "var(--text-dim)";
                       el.style.transform = "translateY(0)";
                       el.style.boxShadow = "none";
                     }}

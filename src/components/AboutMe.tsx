@@ -48,12 +48,12 @@ const traits = [
 ];
 
 const glassBox = {
-  background: "rgba(255,255,255,0.03)",
+  background: "var(--glass-bg)",
   backdropFilter: "blur(12px)",
   WebkitBackdropFilter: "blur(12px)",
-  border: "1px solid rgba(255,255,255,0.08)",
+  border: "1px solid var(--glass-border)",
   borderRadius: "24px",
-  boxShadow: "0 4px 24px rgba(0,0,0,0.2)",
+  boxShadow: "0 4px 24px rgba(0,0,0,0.12)",
 };
 
 export default function AboutMe() {
@@ -62,6 +62,10 @@ export default function AboutMe() {
 
   return (
     <section id="about" ref={ref} className="relative py-32 overflow-hidden">
+
+      {/* Fade bottom para transición suave hacia la siguiente sección */}
+      <div className="absolute bottom-0 left-0 right-0 h-24 pointer-events-none"
+        style={{ background: "linear-gradient(to top, var(--background), transparent)" }} />
 
       <div className="absolute top-1/3 right-0 w-[500px] h-[500px] rounded-full bg-violet-600/5 blur-[120px] pointer-events-none" />
 
@@ -122,7 +126,7 @@ export default function AboutMe() {
                 height: "90px",
                 borderRadius: "50%",
                 objectFit: "cover",
-                border: "1px solid rgba(255,255,255,0.12)",
+                border: "1px solid var(--glass-border)",
                 boxShadow: "0 0 0 3px rgba(99,102,241,0.15)",
                 flexShrink: 0,
               }}
@@ -173,8 +177,8 @@ export default function AboutMe() {
                 transition={{ duration: 0.5, delay: 0.4 + i * 0.08 }}
                 className="group flex flex-col gap-3 cursor-default"
                 style={{
-                  background: "rgba(255,255,255,0.02)",
-                  border: "1px solid rgba(255,255,255,0.07)",
+                  background: "var(--glass-bg-2)",
+                  border: "1px solid var(--glass-border-dim)",
                   borderRadius: "16px",
                   padding: "1.25rem",
                   transition: "border-color 0.3s ease, background 0.3s ease",
@@ -186,8 +190,8 @@ export default function AboutMe() {
                 }}
                 onMouseLeave={e => {
                   const el = e.currentTarget as HTMLDivElement;
-                  el.style.borderColor = "rgba(255,255,255,0.07)";
-                  el.style.background = "rgba(255,255,255,0.02)";
+                  el.style.borderColor = "var(--glass-border-dim)";
+                  el.style.background = "var(--glass-bg-2)";
                 }}
               >
                 <span className="text-zinc-400 group-hover:text-indigo-400 transition-colors duration-300">
