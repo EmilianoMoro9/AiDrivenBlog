@@ -56,7 +56,7 @@ function AnimatedTitle() {
       transition: {
         duration: 0.9,
         times: [0, 0.1, 0.21, 0.33, 0.43, 1],
-        delay: idx * 0.06,
+        delay: 0.8 + idx * 0.06,
       },
     };
   }

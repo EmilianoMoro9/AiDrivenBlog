@@ -4,6 +4,7 @@ import AboutMe from "@/components/AboutMe";
 import Experience from "@/components/Experience";
 import Stack from "@/components/Stack";
 import Projects from "@/components/Projects";
+import Footer from "@/components/Footer";
 
 export default function Home() {
   return (
@@ -16,6 +17,7 @@ export default function Home() {
         <Stack />
         <Projects />
       </main>
+      <Footer />
     </>
   );
 }

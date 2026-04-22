@@ -130,7 +130,7 @@ export default function Projects() {
         >
           <span style={{ color: "var(--text-primary)" }}>Lo que </span>
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-violet-400">
-            construí.
+            construí(mos).
           </span>
         </motion.h3>
 
@@ -142,8 +142,7 @@ export default function Projects() {
           className="text-center font-light text-zinc-500 italic"
           style={{ fontSize: "0.95rem", marginBottom: "3.5rem" }}
         >
-          Proyectos reales, en entornos reales.{" "}
-          <span className="text-zinc-600">Los problemas son los mejores maestros.</span>
+          Proyectos reales, en entornos reales, construidos en equipo.
         </motion.p>
 
         {/* Grid de cards */}
