@@ -3,6 +3,7 @@ import Hero from "@/components/Hero";
 import AboutMe from "@/components/AboutMe";
 import Experience from "@/components/Experience";
 import Stack from "@/components/Stack";
+import Projects from "@/components/Projects";
 
 export default function Home() {
   return (
@@ -13,7 +14,7 @@ export default function Home() {
         <AboutMe />
         <Experience />
         <Stack />
-        <div className="min-h-screen" />
+        <Projects />
       </main>
     </>
   );
