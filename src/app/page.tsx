@@ -13,7 +13,7 @@ export default function Home() {
         <AboutMe />
         <Experience />
         <Stack />
-        <div className="min-h-screen bg-zinc-950" />
+        <div className="min-h-screen" />
       </main>
     </>
   );

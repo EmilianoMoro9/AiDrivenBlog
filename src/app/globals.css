@@ -64,12 +64,14 @@
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 120px;
+  background-color: var(--bg-primary);
 }
 
 body {
-  background: var(--background);
+  background-color: var(--bg-primary);
   color: var(--foreground);
   font-family: var(--font-geist-sans, system-ui, sans-serif);
+  min-height: 100vh;
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
