@@ -155,7 +155,7 @@ export default function Experience() {
             className="text-5xl md:text-6xl font-thin leading-tight"
             style={{ marginBottom: "2.5rem", textAlign: "left" }}
           >
-            <span style={{ color: active ? VIOLET : "rgba(255,255,255,0.25)", transition: "color 0.5s ease" }}>
+            <span style={{ color: "white" }}>
               T
             </span>
             <span className="text-white">rayectoria </span>
