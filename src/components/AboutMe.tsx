@@ -78,7 +78,7 @@ export default function AboutMe() {
           transition={{ duration: 0.6 }}
           className="flex items-center justify-center gap-5 mb-14"
         >
-          <span className="text-sm font-light tracking-[0.4em] uppercase text-indigo-400">01</span>
+          <span className="text-sm font-light tracking-[0.4em] uppercase text-indigo-400">03</span>
           <div className="h-px w-16 bg-indigo-400/40" />
           <h2 className="text-sm font-light tracking-[0.4em] uppercase text-zinc-500">About Me</h2>
         </motion.div>

@@ -65,7 +65,7 @@ export default function Stack() {
           className="flex items-center justify-center gap-5"
           style={{ marginBottom: "2rem" }}
         >
-          <span className="text-sm font-light tracking-[0.4em] uppercase text-indigo-400">03</span>
+          <span className="text-sm font-light tracking-[0.4em] uppercase text-indigo-400">04</span>
           <div className="h-px w-16 bg-indigo-400/40" />
           <h2 className="text-sm font-light tracking-[0.4em] uppercase text-zinc-500">Stack</h2>
         </motion.div>

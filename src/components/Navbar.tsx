@@ -4,10 +4,10 @@ import { useEffect, useState } from "react";
 import { useTheme } from "@/context/ThemeContext";
 
 const links = [
-  { label: "About Me", href: "#about" },
   { label: "Experiencia", href: "#experiencia" },
-  { label: "Stack", href: "#stack" },
   { label: "Proyectos", href: "#projects" },
+  { label: "About Me", href: "#about" },
+  { label: "Stack", href: "#stack" },
   { label: "Contacto", href: "mailto:emimoro2003@gmail.com" },
 ];
 

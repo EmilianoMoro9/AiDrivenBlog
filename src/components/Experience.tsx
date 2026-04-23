@@ -142,7 +142,7 @@ export default function Experience() {
             className="flex items-center justify-center gap-5"
             style={{ marginBottom: "2rem" }}
           >
-            <span className="text-sm font-light tracking-[0.4em] uppercase text-indigo-400">02</span>
+            <span className="text-sm font-light tracking-[0.4em] uppercase text-indigo-400">01</span>
             <div className="h-px w-16 bg-indigo-400/40" />
             <h2 className="text-sm font-light tracking-[0.4em] uppercase text-zinc-500">Experiencia</h2>
           </motion.div>
