@@ -1,7 +1,7 @@
 "use client";
 
-import { motion, useScroll } from "framer-motion";
-import { useState, useEffect, useMemo } from "react";
+import { motion } from "framer-motion";
+import NodeCanvas from "./NodeCanvas";
 
 const fadeUp = (delay = 0) => ({
   initial: { opacity: 0, y: 24 },
@@ -11,111 +11,17 @@ const fadeUp = (delay = 0) => ({
 
 const badges = ["Power Platform", "TypeScript", "AI"];
 
-interface LetterDef {
-  char: string;
-  fallX: number;
-  fallY: number;
-  fallRotate: number;
-}
-
-function buildLetters(word: string): LetterDef[] {
-  return word.split("").map(() => ({
-    char: "",
-    fallX: (Math.random() - 0.5) * 110,
-    fallY: 150 + Math.random() * 160,
-    fallRotate: (Math.random() < 0.5 ? 1 : -1) * (200 + Math.random() * 350),
-  }));
-}
-
-function AnimatedTitle() {
-  const { scrollY } = useScroll();
-  const [shouldFall, setShouldFall] = useState(false);
-
-  useEffect(() => {
-    return scrollY.on("change", (latest) => {
-      setShouldFall(latest > 30);
-    });
-  }, [scrollY]);
-
-  const firstLetters = useMemo(() => {
-    const defs = buildLetters("Emiliano");
-    return "Emiliano".split("").map((char, i) => ({ ...defs[i], char }));
-  }, []);
-
-  const lastLetters = useMemo(() => {
-    const defs = buildLetters("Moro");
-    return "Moro".split("").map((char, i) => ({ ...defs[i], char }));
-  }, []);
-
-  function fallAnimate(letter: LetterDef, idx: number) {
-    return {
-      y: [0, -13, 8, -6, 2, letter.fallY],
-      x: [0, -4, 7, -3, 1, letter.fallX],
-      rotate: [0, -5, 8, -4, 1, letter.fallRotate],
-      opacity: [1, 1, 1, 1, 1, 0] as number[],
-      transition: {
-        duration: 0.9,
-        times: [0, 0.1, 0.21, 0.33, 0.43, 1],
-        delay: 0.8 + idx * 0.06,
-      },
-    };
-  }
-
-  function riseAnimate(idx: number) {
-    return {
-      y: 0,
-      x: 0,
-      rotate: 0,
-      opacity: 1,
-      transition: {
-        type: "spring" as const,
-        stiffness: 200,
-        damping: 18,
-        delay: idx * 0.05,
-      },
-    };
-  }
-
-  return (
-    <motion.h1
-      {...fadeUp(0.25)}
-      className="text-6xl md:text-8xl font-thin tracking-tight text-white leading-none text-center"
-    >
-      {firstLetters.map((letter, i) => (
-        <motion.span
-          key={`f${i}`}
-          animate={shouldFall ? fallAnimate(letter, i) : riseAnimate(i)}
-          style={{ display: "inline-block" }}
-        >
-          {letter.char}
-        </motion.span>
-      ))}
-      <span aria-hidden style={{ display: "inline-block", width: "0.25em" }} />
-      {lastLetters.map((letter, i) => {
-        const idx = firstLetters.length + 1 + i;
-        return (
-          <motion.span
-            key={`l${i}`}
-            animate={shouldFall ? fallAnimate(letter, idx) : riseAnimate(idx)}
-            className="font-light text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-violet-400"
-            style={{ display: "inline-block" }}
-          >
-            {letter.char}
-          </motion.span>
-        );
-      })}
-    </motion.h1>
-  );
-}
-
 export default function Hero() {
   return (
     <section className="relative min-h-screen flex flex-col items-center justify-center px-6 overflow-hidden">
 
-      {/* Glow de fondo */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-indigo-600/10 blur-[120px] pointer-events-none" />
+      {/* Nodos flotantes */}
+      <NodeCanvas />
 
-      <div className="relative z-10 flex flex-col items-center text-center max-w-4xl mx-auto gap-7">
+      {/* Glow de fondo */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-indigo-600/10 blur-[120px] pointer-events-none" style={{ zIndex: 1 }} />
+
+      <div className="relative flex flex-col items-center text-center max-w-4xl mx-auto gap-7" style={{ zIndex: 10 }}>
 
         {/* Saludo */}
         <motion.p
@@ -125,8 +31,16 @@ export default function Hero() {
           Hola, soy
         </motion.p>
 
-        {/* Nombre animado — letras caen al hacer scroll */}
-        <AnimatedTitle />
+        {/* Nombre */}
+        <motion.h1
+          {...fadeUp(0.25)}
+          className="text-6xl md:text-8xl font-thin tracking-tight text-white leading-none text-center"
+        >
+          Emiliano{" "}
+          <span className="font-light text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-violet-400">
+            Moro
+          </span>
+        </motion.h1>
 
         {/* Tagline */}
         <motion.p
@@ -162,7 +76,7 @@ export default function Hero() {
           ))}
         </motion.div>
 
-        {/* Social links — CTA principal: GitHub · LinkedIn · Contact me */}
+        {/* Social links */}
         <motion.div {...fadeUp(0.65)} className="flex items-center gap-4 mt-2">
           {/* GitHub */}
           <a
@@ -235,6 +149,7 @@ export default function Hero() {
         animate={{ opacity: 1 }}
         transition={{ delay: 1.2, duration: 1 }}
         className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
+        style={{ zIndex: 10 }}
       >
         <span className="text-zinc-600 text-xs font-light tracking-[0.3em] uppercase">Scroll</span>
         <motion.div
