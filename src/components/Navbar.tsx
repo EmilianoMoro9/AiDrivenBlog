@@ -1,20 +1,71 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useTheme } from "@/context/ThemeContext";
 
 const links = [
-  { label: "Experiencia", href: "#experiencia" },
-  { label: "Proyectos", href: "#projects" },
-  { label: "About Me", href: "#about" },
-  { label: "Stack", href: "#stack" },
-  { label: "Contacto", href: "mailto:emimoro2003@gmail.com" },
+  { label: "Experiencia", href: "/#experiencia" },
+  { label: "Proyectos",   href: "/#projects"   },
+  { label: "About Me",    href: "/#about"       },
+  { label: "Stack",       href: "/#stack"       },
+  { label: "Contacto",    href: "mailto:emimoro2003@gmail.com" },
+  { label: "Art?",        href: "/art"          },
 ];
+
+function NavLink({
+  label,
+  href,
+  isActive,
+  mobile,
+  onClick,
+}: {
+  label: string;
+  href: string;
+  isActive?: boolean;
+  mobile?: boolean;
+  onClick?: () => void;
+}) {
+  const desktopCls = `text-[15px] font-light transition-colors duration-300 relative group tracking-wide ${
+    isActive ? "text-white" : "text-zinc-300 hover:text-white"
+  }`;
+  const mobileCls =
+    "text-base font-light text-zinc-300 hover:text-white transition-colors duration-300 tracking-wide";
+  const cls = mobile ? mobileCls : desktopCls;
+
+  const content = mobile ? (
+    label
+  ) : (
+    <>
+      {label}
+      <span
+        className={`absolute -bottom-1 left-0 h-px bg-indigo-400 transition-all duration-300 ${
+          isActive ? "w-full" : "w-0 group-hover:w-full"
+        }`}
+      />
+    </>
+  );
+
+  if (href.startsWith("/") && !href.startsWith("/#")) {
+    return (
+      <Link href={href} className={cls} onClick={onClick}>
+        {content}
+      </Link>
+    );
+  }
+  return (
+    <a href={href} className={cls} onClick={onClick}>
+      {content}
+    </a>
+  );
+}
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const { theme, toggle } = useTheme();
+  const pathname = usePathname();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
@@ -34,32 +85,29 @@ export default function Navbar() {
     >
       <nav className="relative flex items-center px-10">
 
-        {/* Logo — izquierda */}
-        <a
-          href="#"
+        {/* Logo */}
+        <Link
+          href="/"
           className="text-2xl font-light tracking-[0.2em] uppercase text-white hover:text-indigo-400 transition-colors duration-300 select-none"
         >
           dev<span className="text-indigo-400 font-thin">.</span>
-        </a>
+        </Link>
 
-        {/* Links — centrados absolutamente */}
+        {/* Desktop links — centrados absolutamente */}
         <ul className="hidden md:flex items-center gap-10 absolute left-1/2 -translate-x-1/2">
           {links.map((link) => (
             <li key={link.href}>
-              <a
+              <NavLink
+                label={link.label}
                 href={link.href}
-                className="text-[15px] font-light text-zinc-300 hover:text-white transition-colors duration-300 relative group tracking-wide"
-              >
-                {link.label}
-                <span className="absolute -bottom-1 left-0 w-0 h-px bg-indigo-400 transition-all duration-300 group-hover:w-full" />
-              </a>
+                isActive={link.href === pathname}
+              />
             </li>
           ))}
         </ul>
 
         {/* Derecha: theme toggle + hamburger */}
         <div className="ml-auto flex items-center gap-3">
-          {/* Theme toggle */}
           <button
             onClick={toggle}
             aria-label="Toggle theme"
@@ -81,7 +129,6 @@ export default function Navbar() {
             )}
           </button>
 
-          {/* Mobile hamburger */}
           <button
             onClick={() => setMenuOpen((prev) => !prev)}
             className="md:hidden flex flex-col gap-[5px] p-1"
@@ -97,19 +144,19 @@ export default function Navbar() {
       {/* Mobile menu */}
       <div
         className={`md:hidden overflow-hidden transition-all duration-500 ease-in-out ${
-          menuOpen ? "max-h-72 opacity-100" : "max-h-0 opacity-0"
+          menuOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
         }`}
       >
         <ul className={`flex flex-col px-10 pb-6 pt-5 gap-5 border-t mt-5 ${theme === "dark" ? "border-white/8" : "border-black/10"}`}>
           {links.map((link) => (
             <li key={link.href}>
-              <a
+              <NavLink
+                label={link.label}
                 href={link.href}
+                mobile
+                isActive={link.href === pathname}
                 onClick={() => setMenuOpen(false)}
-                className="text-base font-light text-zinc-300 hover:text-white transition-colors duration-300 tracking-wide"
-              >
-                {link.label}
-              </a>
+              />
             </li>
           ))}
         </ul>

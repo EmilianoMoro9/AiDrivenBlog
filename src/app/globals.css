@@ -109,3 +109,33 @@ body {
 [data-theme="light"] .border-white\/8  { border-color: var(--border-color); }
 [data-theme="light"] .border-white\/10 { border-color: var(--glass-border); }
 [data-theme="light"] .bg-white\/5      { background-color: var(--glass-bg); }
+
+/* === /art page ============================================ */
+
+/* Parallax fallback: background-attachment: fixed no funciona en iOS Safari */
+@media (max-width: 768px) {
+  .art-parallax {
+    background-attachment: scroll;
+  }
+}
+
+/* CTA button del cierre — hover via CSS (server component safe) */
+.art-cta-btn {
+  display: inline-block;
+  padding: 14px 36px;
+  background: rgba(14, 10, 8, 0.85);
+  border: 1px solid rgba(210, 175, 130, 0.30);
+  border-radius: 2px;
+  color: rgba(240, 225, 200, 0.88);
+  font-size: 13px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: border-color 0.3s ease, color 0.3s ease, background 0.3s ease;
+}
+
+.art-cta-btn:hover {
+  border-color: rgba(210, 175, 130, 0.58);
+  color: rgba(255, 248, 235, 1);
+  background: rgba(20, 15, 10, 0.90);
+}
